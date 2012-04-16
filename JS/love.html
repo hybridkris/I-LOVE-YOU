@@ -1,0 +1,72 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<title>I LOVE YOU</title>
+<style type="text/css">
+  body {font-family: sans-serif; font-size:12px; background-color:#FFFFFF; color:#33333; margin-left:10%; width:80%;}
+</style>
+<script type=”text/javascript” src=”http://apis.google.com/js/plusone.js”></script>
+</head>
+<body>
+<h1 id="message"><h1>
+<p><a href="javascript:void(0)" onclick='changeText()' value='Change Text'>Love me two times baby.</a></p>
+
+<script type="text/javascript">
+  	var msg = new Array ();
+	msg[ 0] = "That code you just spent all day refactoring because it needed cleaned up? That was the right thing to do, sweety.";
+	msg[ 1] = "I'm so glad you start conversations with the positive. It totally energizes me to make things even better!";
+	msg[ 2] = "The 98% complain. The 2% fix, repair, make better, adapt, overcome, improvise. Welcome to the 2%.";
+	
+	
+	function gup( name )
+	{
+	  name = name.replace(/[\[]/,"\\\[").replace(/[\]]/,"\\\]");
+	  var regexS = "[\\?&]"+name+"=([^&#]*)";
+	  var regex = new RegExp( regexS );
+	  var results = regex.exec( window.location.href );
+	  if( results == null )
+	    return "";
+	  else
+	    return results[1];
+	}
+
+	function setTextValueByIndex(index)
+	{
+		document.getElementById('message').innerHTML = msg[index];
+	}
+
+	function loadText()
+	{
+		var index = gup( "p" );
+		var x = msg.length;
+
+		if( index == "" )
+		{
+			changeText();
+		}
+		else
+		{
+			var num = parseInt( index );
+			if( num < x )
+			{
+				setTextValueByIndex( num );
+			}
+			else
+			{
+				changeText();
+			}
+		}
+	}
+
+	function changeText()
+	{
+		var x = msg.length;
+		var i = Math.floor( x * Math.random() );
+		setTextValueByIndex( i );
+	}
+	changeText();
+</script>
+</body>
+</html>
